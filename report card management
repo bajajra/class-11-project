@@ -1,0 +1,263 @@
+	//rreport.cpp
+	//to create a report card.
+	# include <iostream.h>
+	# include <process.h>
+	# include <conio.h>
+	# include <dos.h>
+	void main()
+	    {
+	       int a[10],b[10],c[10],d[10],e[10],sum[10],roll[10];
+	       char name[20][10],fname[20][10];
+	       int rn[10],rank[10]={0};
+	       float per[10];
+	       int n,i,j,large;
+	       int choi;
+	       int l=0;
+	       char choice;
+	 hhh : textbackground(0);
+	       textcolor(11);
+	       clrscr();
+	       cout<<"\n\t\t\t  EXAMINATION  RECORDS";
+	       cout<<"\n\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~";
+	       cout<<"\n\n\t\t\t  MAIN   MENU";
+	       cout<<"\n\t\t\t-------*-------";
+	       cout<<"\n\t\t1. ADD RECORDS";
+	       cout<<"\n\t\t2. VIEW RECORDS";
+	       cout<<"\n\t\t3. VIEW RANKS";
+	       cout<<"\n\t\t4. VIEW CLASS RECORD";
+	       cout<<"\n\t\t5. EXIT";
+	       cout<<"\n\n\tEnter your choice : ";
+	       cin>>choi;
+	       if(choi==1)
+	       {
+	       textcolor(6);
+	       clrscr();
+	       cout<<"\n\n\tEnter the no. of students : ";
+	       cin>>n;
+	       if(n<=0)
+		  {
+		     goto hhh;
+		     clrscr();
+		  }
+	       for(i=l;i<(l+n);i++)
+	       {
+	       textcolor(3);
+	       clrscr();
+	       rn[i]=i+1; 
+	       cout<<"\n\tRECORD NO. - "<<rn[i];
+	       cout<<"\n\tEnter your name: ";
+	       cin>>name[i];
+	       cout<<"\n\tEnter your father's name: ";
+	       cin>>fname[i];
+	       cout<<"\n\tEnter your roll no.: ";
+	       cin>>roll[i];
+	       cout<<"\n\t-----------------------------------------------------------";
+	       cout<<"\n\tEnter your marks in the following subjects.";
+	       cout<<"\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+	  ah : cout<<"\n\t  English: ";
+	       cin>>a[i];
+	       if((a[i]>100)||(a[i]<0))
+		  {
+		     cout<<"\n\tWRONG ENTRY.";
+		     goto ah;
+		  }
+	  bh : cout<<"\n\t    Maths: ";
+	       cin>>b[i];
+	       if((b[i]<0)||(b[i]>100))
+		  {
+		     cout<<"\n\tWRONG ENTRY.";
+		     goto bh;
+		  }
+	  ch : cout<<"\n\t  Physics: ";
+	       cin>>c[i];
+	       if((c[i]<0)||(c[i]>100))
+		  {
+		     cout<<"\n\tWRONG ENTRY.";
+		     goto ch;
+		  }
+	  dh : cout<<"\n\tChemistry: ";
+	       cin>>d[i];
+	       if((d[i]<0)||(d[i]>100))
+		  {
+		     cout<<"\n\tWRONG ENTRY.";
+		     goto dh;
+		  }
+	  eh : cout<<"\n\t Computer: ";
+	       cin>>e[i];
+	       if((e[i]<0)||(e[i]>100))
+		  {
+		     cout<<"\n\tWRONG ENTRY.";
+		     goto eh;
+		  }
+	       sum[i]=(a[i]+b[i]+c[i]+d[i]+e[i]);
+	       per[i]=(sum[i]/5);
+	       }
+	       l=l+n;
+	       clrscr();
+	       goto hhh;
+	       }
+	       if(choi==2)
+	       {
+	       textcolor(12);
+	       clrscr();
+	       cout<<"\n\t----------------------------*****-----------------";
+	       cout<<"---------------";
+	       cout<<"\n\tDo you want to see any report card : ";
+	       cin>>choice;
+	       if((choice=='n')||(choice=='N'))
+		  {
+		  clrscr();
+		  goto hhh;
+		  }
+	       while((choice=='y')||(choice=='Y'))
+	       {
+	       textcolor(13);
+	       clrscr();
+       label : cout<<"\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+	       cout<<"~~~~~~~~~~~~";
+	       cout<<"\n\tEnter the record no. of the student";
+	       cout<<" whose report card you want to see : ";
+	       cin>>j;
+	       i=j-1;
+	       if(j>l)
+		  {
+		  textcolor(12);
+		  clrscr();
+		  cout<<"\n\tWRONG CHOICE. Please enter again.";
+		  goto label;
+		  }
+	       textcolor(10);
+	       clrscr();
+	       cout<<"\n\t\t\t\t----- * -----";
+	       cout<<"\n\t\t\t\t REPORT CARD ";
+	       cout<<"\n\t\t\t\t----- * -----";
+	       cout<<"\n\t         Name: "<<name[i];
+	       cout<<"\n\tFather's Name: "<<fname[i];
+	       cout<<"\n\t     Roll No.: "<<roll[i];
+	       cout<<"\n\t\t\t\t\t\t\t\t\t\t\t\t";
+	       cout<<"\n\t-------------------------";
+	       cout<<"\n\t MARKS   (Max. marks=100)";
+	       cout<<"\n\t-------------------------";
+	       cout<<"\n\t\t\t\t\t\t\t\t\t\t\t\t";
+	       cout<<"\n\t   ENGLISH = "<<a[i];
+	       cout<<"\n\t     MATHS = "<<b[i];
+	       cout<<"\n\t   PHYSICS = "<<c[i];
+	       cout<<"\n\t CHEMISTRY = "<<d[i];
+	       cout<<"\n\t  COMPUTER = "<<e[i];
+	       cout<<"\n\t\t\t\t\t\t\t\t\t\t\t\t";
+	       cout<<"\n\t|Total|\t\t\t|Percentage|";
+	       cout<<"\n";
+	       cout<<"\n\t"<<sum[i]<<"\t\t\t" <<per[i]<<"%";
+	       if(per[i]>=90)
+		  cout<<"\t\t\tGRADE : A";
+	       else
+		  {
+		     if(per[i]>=75)
+			cout<<"\t\t\tGRADE : B";
+		     else
+			{
+			   if(per[i]>=60)
+		      cout<<"\t\t\tGRADE : C";
+		   else
+			      {
+				 if(per[i]>=45)
+				    cout<<"\t\t\tGRADE : D";
+				 else
+				    cout<<"\t\t\tFAIL";
+			      }
+			}
+		  }
+	       cout<<"\n\t----------------------------*****-----------------";
+	       cout<<"---------------";
+	       cout<<"\n\tDo you want to see any report card : ";
+	       cin>>choice;
+	       if((choice=='n')||(choice=='N'))
+	       {
+		  clrscr();
+		  goto hhh;
+	       }
+	       }
+	       }
+	       if(choi==3)
+	       {   for(int t=0;t<10;t++)
+		      rank[t]=0;
+		   int temp,k=1,pos;
+		   for(int x=0;x<l;x++)
+		    {    for(int s=0;s<l,rank[s]!=0;s++);
+			 large=per[s];
+			 pos=s;      
+			 for(int y=0;y<l;y++)
+			    {  
+			       if(rank[y]==0)
+				  {
+				     if(per[y]>large)
+					{  
+					   large=per[y];
+					   pos=y;
+					}
+				  }
+			    }
+			 rank[pos]=k;
+			 k++;
+		     }
+		   textcolor(14);
+		   clrscr();
+		   for(int z=0;z<l;z++)
+		      {
+			 cout<<"\n\tRANK-"<<rank[z];
+			 cout<<"\n\t\t      NAME : "<<name[z];
+			 cout<<"\n\t\t  ROLL no. : "<<roll[z];
+			 cout<<"\n\t\tPERCENTAGE : "<< per[z];
+		      }
+		   getch();
+		   clrscr();
+		   goto hhh;
+	       }
+	       if(choi==4)
+	       {
+		   for(int t=0;t<10;t++)
+		      rank[t]=0;
+		   int temp,k=1,pos;
+		   for(int x=0;x<l;x++)
+		    {    for(int s=0;s<l,rank[s]!=0;s++);
+			 large=per[s];
+			 pos=s;      
+			 for(int y=0;y<l;y++)
+			    {  
+			       if(rank[y]==0)
+				  {
+				     if(per[y]>large)
+					{  
+					   large=per[y];
+					   pos=y;
+					}
+				  }
+			    }
+			 rank[pos]=k;
+			 k++;
+		     }
+	       textcolor(10);
+	       clrscr();
+	       cout<<"\n\tRec.No.   Roll No.   Name     Total   %age   Rank";
+	       cout<<"\n\t±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±±";
+	       int ro=5;
+	       for(i=0;i<l;i++)
+	       {
+	       gotoxy(10,ro);cout<<rn[i];gotoxy(20,ro);cout<<roll[i];
+	       gotoxy(30,ro);cout<<name[i];gotoxy(40,ro);cout<<sum[i];
+	       gotoxy(47,ro);cout<<per[i]; gotoxy(55,ro);cout<<rank[i];
+	       ro++;
+	       }
+	       getch();
+	       goto hhh;
+	       }
+	       if(choi==5)
+	       {
+	       textbackground(0);
+	       textcolor(7);
+	       clrscr();
+	       cout<<"\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\tTHANK YOU !";
+	       cout<<"\n\n\t\t\t\tPLEASE WAIT.";
+	       delay(3000);
+	       }
+	  }  
